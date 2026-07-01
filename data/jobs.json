@@ -1,0 +1,24 @@
+[
+  {
+    "id": "f56d67a4-583e-4148-9ec9-ce45505db9c9",
+    "code": "fr001",
+    "title": "Front End Developer",
+    "department": "Front End",
+    "location": "Coimbatore",
+    "type": "Full-time",
+    "description": "We are seeking a motivated and enthusiastic team member to join our growing team. As a fresher/experience, you will have the opportunity to work on exciting projects and gain valuable experience in the industry. The ideal candidate will have a strong understanding of React, NodeJS, PHP, JavaScript, and related technologies. If you are passionate about delivering high-quality solutions and are eager to learn and grow, we want to hear from you..",
+    "requirements": [
+      "Strong knowledge of React and its core principles.",
+      "Good understanding of JavaScript and its latest features.",
+      "Familiarity with state management libraries like Redux or MobX.",
+      "Knowledge of modern front-end technologies, such as HTML5, CSS3, and REST APIs.",
+      "Experience with Git and version control.",
+      "Ability to write clean, maintainable, and well-documented code.",
+      "Good understanding of responsive design and cross-browser compatibility issues.",
+      "Strong problem-solving and analytical skills.",
+      "Good communication and collaboration skills to work effectively in a team environment."
+    ],
+    "postedDate": "2026-01-12T14:24:15.109Z",
+    "status": "Closed"
+  }
+]
