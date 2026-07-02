@@ -1,6 +1,6 @@
 version: 1
-# Next.js static export with trailingSlash: true
-# Builds folder/index.html — URLs like /admin/login/ (never /admin/login.html)
+# Next.js static export — trailingSlash: false
+# URLs: /admin/dashboard (no trailing slash)
 
 frontend:
   phases:
@@ -21,44 +21,49 @@ frontend:
     paths:
       - node_modules/**/*
 
-  # Map extensionless URLs → folder routes (no .html in browser address bar)
+  # Strip trailing slashes from old bookmarked URLs
   customRedirects:
-    - source: "/admin"
-      target: "/admin/login/"
+    - source: "/admin/"
+      target: "/admin/login"
       status: "302"
-    - source: "/admin/login"
-      target: "/admin/login/"
+    - source: "/admin/login/"
+      target: "/admin/login"
       status: "301"
-    - source: "/admin/dashboard"
-      target: "/admin/dashboard/"
+    - source: "/admin/dashboard/"
+      target: "/admin/dashboard"
       status: "301"
-    - source: "/admin/employees"
-      target: "/admin/employees/"
+    - source: "/admin/employees/"
+      target: "/admin/employees"
       status: "301"
-    - source: "/admin/employees/new"
-      target: "/admin/employees/new/"
+    - source: "/admin/employees/new/"
+      target: "/admin/employees/new"
       status: "301"
-    - source: "/admin/teams"
-      target: "/admin/teams/"
+    - source: "/admin/teams/"
+      target: "/admin/teams"
       status: "301"
-    - source: "/admin/jobs"
-      target: "/admin/jobs/"
+    - source: "/admin/jobs/"
+      target: "/admin/jobs"
       status: "301"
-    - source: "/admin/jobs/new"
-      target: "/admin/jobs/new/"
+    - source: "/admin/jobs/new/"
+      target: "/admin/jobs/new"
       status: "301"
-    - source: "/admin/gallery"
-      target: "/admin/gallery/"
+    - source: "/admin/gallery/"
+      target: "/admin/gallery"
       status: "301"
-    - source: "/services"
-      target: "/services/"
+    - source: "/services/"
+      target: "/services"
       status: "301"
-    - source: "/teams"
-      target: "/teams/"
+    - source: "/teams/"
+      target: "/teams"
       status: "301"
-    - source: "/careers"
-      target: "/careers/"
+    - source: "/careers/"
+      target: "/careers"
       status: "301"
-    - source: "/careers/<*>"
-      target: "/careers/<*>/"
+    - source: "/careers/<*>/"
+      target: "/careers/<*>"
       status: "301"
+
+    # Custom branded 404 for any path that does not exist (must be last)
+    - source: "/<*>"
+      target: "/404.html"
+      status: "404"

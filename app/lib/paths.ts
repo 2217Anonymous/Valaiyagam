@@ -1,8 +1,8 @@
 /**
- * Path helpers for static export (folder/index.html — no .html in URLs).
+ * Path helpers — URLs without trailing slash (trailingSlash: false).
  */
 
-const TRAILING_SLASH = true;
+const TRAILING_SLASH = false;
 
 export function getBasePath(): string {
   return process.env.NEXT_PUBLIC_BASE_PATH || "";
@@ -25,13 +25,13 @@ export function appPath(path: string): string {
 }
 
 export const ADMIN_ROUTES = {
-  root: "/admin/",
-  login: "/admin/login/",
-  dashboard: "/admin/dashboard/",
-  employees: "/admin/employees/",
-  employeesNew: "/admin/employees/new/",
-  teams: "/admin/teams/",
-  jobs: "/admin/jobs/",
-  jobsNew: "/admin/jobs/new/",
-  gallery: "/admin/gallery/",
+  root: "/admin",
+  login: "/admin/login",
+  dashboard: "/admin/dashboard",
+  employees: "/admin/employees",
+  employeesNew: "/admin/employees/new",
+  teams: "/admin/teams",
+  jobs: "/admin/jobs",
+  jobsNew: "/admin/jobs/new",
+  gallery: "/admin/gallery",
 } as const;

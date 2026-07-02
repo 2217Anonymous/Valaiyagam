@@ -16,19 +16,19 @@ const exploreLinks = [
   {
     label: "Services",
     description: "Technology & digital marketing solutions",
-    href: "/services/",
+    href: "/services",
     icon: Wrench,
   },
   {
     label: "Our Team",
     description: "Meet the people behind our work",
-    href: "/teams/",
+    href: "/teams",
     icon: Users,
   },
   {
     label: "Careers",
     description: "Join our growing team",
-    href: "/careers/",
+    href: "/careers",
     icon: Briefcase,
   },
   {

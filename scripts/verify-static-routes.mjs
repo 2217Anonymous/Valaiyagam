@@ -1,12 +1,11 @@
 /**
- * Verifies static export routes exist as folder/index.html (clean URLs, no .html in paths).
+ * Verifies static export routes (trailingSlash: false — no trailing slash in URLs).
  */
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 
 const OUT = join(process.cwd(), "out");
 
-/** Public URL paths — no .html extension */
 const REQUIRED_ROUTES = [
   "/",
   "/services",
@@ -27,8 +26,8 @@ const REQUIRED_ROUTES = [
 function resolveExportFile(route) {
   if (route === "/404") return "404.html";
   if (route === "/") return "index.html";
-  const folder = route.replace(/^\//, "");
-  return join(folder, "index.html");
+  const segment = route.replace(/^\//, "");
+  return `${segment}.html`;
 }
 
 const missing = REQUIRED_ROUTES.filter((route) => {
@@ -42,6 +41,12 @@ if (missing.length > 0) {
   process.exit(1);
 }
 
+const notFoundHtml = join(OUT, "404.html");
+if (!existsSync(notFoundHtml)) {
+  console.error("Static export verification FAILED: out/404.html is missing.");
+  process.exit(1);
+}
+
 console.log(
-  `Static export OK — ${REQUIRED_ROUTES.length} routes verified (${REQUIRED_ROUTES.join(", ")}).`,
+  `Static export OK — ${REQUIRED_ROUTES.length} routes + custom 404.html.`,
 );

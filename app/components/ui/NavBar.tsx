@@ -83,10 +83,10 @@ export function NavBar() {
     const navLinks: NavLink[] = [
         { name: "home", href: "/", sectionId: "home" },
         { name: "about", href: "/#about", sectionId: "about" },
-        { name: "services", href: "/services/" },
+        { name: "services", href: "/services" },
         { name: "work", href: "/#gallery", sectionId: "gallery" },
-        { name: "team", href: "/teams/" },
-        { name: "careers", href: "/careers/" },
+        { name: "team", href: "/teams" },
+        { name: "careers", href: "/careers" },
         { name: "contact", href: "/#contact", sectionId: "contact" },
     ];
 

@@ -85,9 +85,7 @@ export function Sidebar({ isOpen = false, onClose }: SidebarProps) {
               <span
                 className={cn(
                   "admin-nav-icon",
-                  isActive
-                    ? "bg-white/20 text-white"
-                    : "bg-primary/10 text-primary",
+                  !isActive && "bg-primary/10 text-primary",
                 )}
               >
                 <Icon className="h-[18px] w-[18px]" />

@@ -29,14 +29,14 @@ export function absoluteUrl(path = "/"): string {
     return `${site}${normalized}`;
   }
 
-  // trailingSlash: true — canonical URLs use trailing slash, no .html extension
-  const withSlash =
+  // trailingSlash: false — no trailing slash in canonical URLs
+  const clean =
     normalized === "/"
       ? "/"
       : normalized.endsWith("/")
-        ? normalized
-        : `${normalized}/`;
-  return `${site}${withSlash}`;
+        ? normalized.slice(0, -1)
+        : normalized;
+  return `${site}${clean}`;
 }
 
 export const SITE_CONFIG = {

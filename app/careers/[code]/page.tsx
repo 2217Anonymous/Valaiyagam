@@ -76,11 +76,11 @@ export default async function JobDetailsPage({ params }: PageProps) {
         <Breadcrumbs
           items={[
             { label: "Home", href: "/" },
-            { label: "Careers", href: "/careers/" },
+            { label: "Careers", href: "/careers" },
             { label: job.title },
           ]}
         />
-        <Link href="/careers/" className="inline-block mb-8">
+        <Link href="/careers" className="inline-block mb-8">
           <Button
             variant="ghost"
             size="sm"
@@ -99,7 +99,7 @@ export default async function JobDetailsPage({ params }: PageProps) {
             <p className="text-slate-400">
               {job.title} ({job.code}) is no longer accepting applications.
               Browse{" "}
-              <Link href="/careers/" className="text-primary hover:underline">
+              <Link href="/careers" className="text-primary hover:underline">
                 current openings
               </Link>{" "}
               or email{" "}

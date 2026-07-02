@@ -693,6 +693,15 @@
     @apply flex h-9 w-9 shrink-0 items-center justify-center rounded-lg;
   }
 
+  .admin-nav-link-active .admin-nav-icon {
+    background-color: #ffffff;
+    color: var(--primary-color);
+  }
+
+  .admin-nav-link-active .admin-nav-icon svg {
+    color: var(--primary-color);
+  }
+
   .admin-page-title {
     @apply text-2xl font-bold text-slate-900 sm:text-3xl;
   }
