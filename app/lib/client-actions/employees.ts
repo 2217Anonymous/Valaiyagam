@@ -1,6 +1,7 @@
 "use client";
 
 import { v4 as uuidv4 } from "uuid";
+import { ADMIN_ROUTES, appPath } from "@/app/lib/paths";
 import type { Document, Employee } from "@/app/lib/types";
 
 const STORAGE_KEY = "vantage_static_employees";
@@ -61,7 +62,7 @@ export async function createEmployee(
       joinedDate: new Date().toISOString(),
     });
     writeEmployees(employees);
-    window.location.href = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/admin/employees`;
+    window.location.href = appPath(ADMIN_ROUTES.employees);
     return null;
   } catch {
     return { error: "Failed to create employee" };

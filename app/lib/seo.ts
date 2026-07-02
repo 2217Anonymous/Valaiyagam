@@ -7,8 +7,8 @@ import {
   LOGO_ICON,
 } from "./themes";
 
-const DEFAULT_SITE_URL = "https://www.valaiyagam.com/";
-const DEFAULT_BASE_PATH = "/Valaiyagam";
+const DEFAULT_SITE_URL = "https://www.valaiyagam.com";
+const DEFAULT_BASE_PATH = "";
 
 /** Production site origin including optional GitHub Pages base path */
 export function getSiteUrl(): string {

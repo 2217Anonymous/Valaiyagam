@@ -1,6 +1,7 @@
 "use client";
 
 import { v4 as uuidv4 } from "uuid";
+import { ADMIN_ROUTES, appPath } from "@/app/lib/paths";
 import type { Job } from "@/app/lib/types";
 
 const STORAGE_KEY = "vantage_static_jobs";
@@ -53,7 +54,7 @@ export async function createJob(
       status: "Open",
     });
     writeJobs(jobs);
-    window.location.href = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/admin/jobs`;
+    window.location.href = appPath(ADMIN_ROUTES.jobs);
     return null;
   } catch {
     return { error: "Failed to create job" };

@@ -1,5 +1,7 @@
 "use client";
 
+import { ADMIN_ROUTES, appPath } from "@/app/lib/paths";
+
 const SESSION_KEY = "vantage_admin_session";
 
 export function isAdminAuthenticated() {
@@ -16,7 +18,7 @@ export async function loginAction(
 
   if (username === "admin" && password === "admin123") {
     localStorage.setItem(SESSION_KEY, JSON.stringify({ userId: "1", username }));
-    window.location.href = `${getBasePath()}/admin/dashboard`;
+    window.location.href = appPath(ADMIN_ROUTES.dashboard);
     return null;
   }
 
@@ -25,9 +27,5 @@ export async function loginAction(
 
 export function logout() {
   localStorage.removeItem(SESSION_KEY);
-  window.location.href = `${getBasePath()}/`;
-}
-
-function getBasePath() {
-  return process.env.NEXT_PUBLIC_BASE_PATH || "";
+  window.location.href = appPath("/");
 }

@@ -1,0 +1,76 @@
+version: 1
+# AWS Amplify — Next.js static export (output: "export", trailingSlash: true)
+# Set env vars in Amplify Console → Environment variables (see .env.example)
+
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm ci
+    build:
+      commands:
+        # Override in Amplify Console → Environment variables if needed
+        - export NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL:-https://www.valaiyagam.com}
+        - export NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH:-}
+        - npm run build
+        - node scripts/verify-static-routes.mjs
+  artifacts:
+    baseDirectory: out
+    files:
+      - "**/*"
+  cache:
+    paths:
+      - node_modules/**/*
+
+  # CloudFront redirects (required because trailingSlash: true serves folder/index.html)
+  # Without these, /admin and /services return 404 on direct access or refresh.
+  customRedirects:
+    # Admin entry — bare /admin has no index until build; send to login
+    - source: "/admin"
+      target: "/admin/login/"
+      status: "302"
+
+    # Public pages
+    - source: "/services"
+      target: "/services/"
+      status: "301"
+    - source: "/teams"
+      target: "/teams/"
+      status: "301"
+    - source: "/careers"
+      target: "/careers/"
+      status: "301"
+
+    # Admin nested routes (no trailing slash → with trailing slash)
+    - source: "/admin/"
+      target: "/admin/login/"
+      status: "302"
+    - source: "/admin/login"
+      target: "/admin/login/"
+      status: "301"
+    - source: "/admin/dashboard"
+      target: "/admin/dashboard/"
+      status: "301"
+    - source: "/admin/employees"
+      target: "/admin/employees/"
+      status: "301"
+    - source: "/admin/employees/new"
+      target: "/admin/employees/new/"
+      status: "301"
+    - source: "/admin/teams"
+      target: "/admin/teams/"
+      status: "301"
+    - source: "/admin/jobs"
+      target: "/admin/jobs/"
+      status: "301"
+    - source: "/admin/jobs/new"
+      target: "/admin/jobs/new/"
+      status: "301"
+    - source: "/admin/gallery"
+      target: "/admin/gallery/"
+      status: "301"
+
+    # Dynamic career pages — e.g. /careers/fr001 → /careers/fr001/
+    - source: "/careers/<*>"
+      target: "/careers/<*>/"
+      status: "301"
