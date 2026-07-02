@@ -1,8 +1,24 @@
+import type { Metadata } from "next";
 import { readJSON, FILES } from "@/app/lib/db";
 import { Job } from "@/app/lib/types";
 import { Button } from "@/app/components/ui/Button";
 import { Briefcase, MapPin, Clock, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { createPageMetadata, SITE_CONFIG } from "@/app/lib/seo";
+import { Breadcrumbs } from "@/app/components/seo/Breadcrumbs";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Careers — Join Our Team",
+  description:
+    "Explore open roles at Valaiyagam Solution. Remote-friendly culture, challenging projects, and opportunities in software development and digital marketing.",
+  path: "/careers",
+  keywords: [
+    "Valaiyagam careers",
+    "software jobs Coimbatore",
+    "developer jobs",
+    "digital marketing jobs",
+  ],
+});
 
 export default async function CareersPage() {
   const jobs = await readJSON<Job>(FILES.JOBS);
@@ -11,6 +27,12 @@ export default async function CareersPage() {
   return (
     <div className="pt-24 pb-20 px-4 sm:px-6 min-h-screen">
       <div className="max-w-7xl mx-auto">
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Careers" },
+          ]}
+        />
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-20">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gradient mb-4 sm:mb-6">
             Join the Revolution
@@ -18,24 +40,31 @@ export default async function CareersPage() {
           <p className="text-base sm:text-lg text-slate-400">
             We are looking for brilliant minds to help us build the future.
             Remote-friendly culture, top-tier compensation, and challenging
-            problems.
+            problems at {SITE_CONFIG.name}.
           </p>
         </div>
 
         {openJobs.length === 0 ? (
           <div className="text-center py-24 glass-card rounded-3xl border border-dashed border-slate-700">
             <Briefcase className="w-16 h-16 text-slate-600 mx-auto mb-4" />
-            <h3 className="text-xl font-medium text-slate-300">
+            <h2 className="text-xl font-medium text-slate-300">
               No open positions right now.
-            </h3>
+            </h2>
             <p className="text-slate-500 mt-2">
-              But we're always hiring great talent. Email us your resume.
+              Email us at{" "}
+              <a
+                href={`mailto:${SITE_CONFIG.email}`}
+                className="text-primary hover:underline"
+              >
+                {SITE_CONFIG.email}
+              </a>{" "}
+              with your resume.
             </p>
           </div>
         ) : (
           <div className="grid gap-6">
             {openJobs.map((job) => (
-              <div
+              <article
                 key={job.id}
                 className="glass-card p-6 sm:p-8 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-primary/30 transition-colors group"
               >
@@ -65,13 +94,13 @@ export default async function CareersPage() {
                   </div>
                 </div>
 
-                <Link href={`/careers/${job.code}`}>
+                <Link href={`/careers/${job.code}/`}>
                   <Button className="rounded-full px-8 btn-primary-cta border-0 shadow-lg shadow-primary/20 group-hover:scale-105 transition-all">
                     Apply Now
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </Link>
-              </div>
+              </article>
             ))}
           </div>
         )}
