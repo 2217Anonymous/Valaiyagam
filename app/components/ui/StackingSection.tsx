@@ -14,7 +14,6 @@ interface StackingSectionProps {
   titleColor?: string;
   textColor?: string;
   id?: string;
-  allowOverflow?: boolean;
 }
 
 function TitleParallax({ title, titleColor }: { title: string; titleColor?: string }) {
@@ -64,7 +63,6 @@ export function StackingSection({
   titleColor,
   textColor = "#0f172a",
   id,
-  allowOverflow = false,
 }: StackingSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -72,7 +70,7 @@ export function StackingSection({
     <div
       ref={ref}
       id={id}
-      className={`relative min-h-screen flex items-center justify-center ${allowOverflow ? "overflow-visible" : "overflow-hidden"} ${bgColorClass || ""}`}
+      className={`relative min-h-screen flex items-center justify-center overflow-hidden ${bgColorClass || ""}`}
       style={{
         backgroundColor: bgColorClass ? undefined : bgColor,
         color: textColor,
