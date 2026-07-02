@@ -9,13 +9,13 @@ export default async function CareersPage() {
   const openJobs = jobs.filter((j) => j.status === "Open");
 
   return (
-    <div className="pt-24 pb-20 px-6 min-h-screen">
+    <div className="pt-24 pb-20 px-4 sm:px-6 min-h-screen">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <h1 className="text-5xl font-bold text-gradient mb-6">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-20">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gradient mb-4 sm:mb-6">
             Join the Revolution
           </h1>
-          <p className="text-lg text-slate-400">
+          <p className="text-base sm:text-lg text-slate-400">
             We are looking for brilliant minds to help us build the future.
             Remote-friendly culture, top-tier compensation, and challenging
             problems.
@@ -37,7 +37,7 @@ export default async function CareersPage() {
             {openJobs.map((job) => (
               <div
                 key={job.id}
-                className="glass-card p-8 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-primary/30 transition-colors group"
+                className="glass-card p-6 sm:p-8 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-primary/30 transition-colors group"
               >
                 <div className="space-y-3">
                   <div className="flex flex-wrap items-center gap-3">

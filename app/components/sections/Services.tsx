@@ -22,7 +22,7 @@ function ServiceCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-10%" }}
       transition={{ delay: idx * 0.05, duration: 0.5 }}
-      className="group relative p-8 rounded-3xl bg-secondary/20 border border-white/5 overflow-hidden flex flex-col gap-6 items-start w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10"
+      className="group relative p-6 sm:p-8 rounded-3xl bg-secondary/20 border border-white/5 overflow-hidden flex flex-col gap-6 items-start w-full backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10"
     >
       <div
         className={`absolute top-0 right-0 w-64 h-64 bg-linear-to-br ${service.color} opacity-5 blur-3xl rounded-full pointer-events-none transition-opacity duration-300 group-hover:opacity-10`}
@@ -62,21 +62,21 @@ function ServiceCard({
 
 export function Services() {
   return (
-    <section id="services" className="py-24 relative overflow-hidden">
-      <div className="max-w-[95%] mx-auto px-4 md:px-6 relative z-10">
+    <section id="services" className="py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+      <div className="w-full max-w-[95%] mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-5 max-w-[95%] mx-auto"
+          className="text-center mb-8 sm:mb-12 max-w-4xl mx-auto"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-4">
             <Zap className="w-3 h-3 fill-primary" /> Expertise
           </div>
-          <h2 className="text-5xl md:text-7xl font-black mb-6">
+          <h2 className="heading-section mb-4 sm:mb-6">
             Our <span className="text-primary italic">Services</span>
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground">
             Our services are designed to help businesses achieve their goals and
             stay ahead of the curve. From enterprise technology to full-scale
             digital marketing, we deliver high-quality results using the latest
@@ -85,7 +85,7 @@ export function Services() {
           </p>
         </motion.div>
 
-        <div className="flex flex-wrap justify-center gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {technologyServices.map((service, idx) => (
             <ServiceCard key={service.id} service={service} idx={idx} />
           ))}
@@ -95,7 +95,7 @@ export function Services() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mt-20 mb-10"
+          className="text-center mt-16 sm:mt-20 mb-8 sm:mb-10"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-4">
             <Zap className="w-3 h-3 fill-primary" /> Digital Marketing
@@ -109,7 +109,7 @@ export function Services() {
           </p>
         </motion.div>
 
-        <div className="flex flex-wrap justify-center gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {marketingServices.map((service, idx) => (
             <ServiceCard
               key={service.id}

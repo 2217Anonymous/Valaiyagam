@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 interface StackingSectionProps {
@@ -14,23 +14,38 @@ interface StackingSectionProps {
   titleColor?: string;
   textColor?: string;
   id?: string;
+  allowOverflow?: boolean;
 }
 
 function TitleParallax({ title, titleColor }: { title: string; titleColor?: string }) {
   const ref = useRef(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], [-1000, 1000]);
+  const x = useTransform(
+    scrollYProgress,
+    [0, 1],
+    isDesktop ? [-1000, 1000] : [-200, 200],
+  );
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 0.1, 0.1, 0]);
 
   return (
     <div ref={ref} className="absolute top-0 left-0 right-0 overflow-hidden pointer-events-none select-none">
       <motion.h2
         style={{ x, opacity, color: titleColor || "rgba(0,0,0,0.5)" }}
-        className="text-[10rem] md:text-[15rem] font-black uppercase tracking-tighter whitespace-nowrap opacity-10"
+        className="text-5xl sm:text-6xl md:text-8xl lg:text-[10rem] xl:text-[15rem] font-black uppercase tracking-tighter whitespace-nowrap opacity-10"
       >
         {title}
       </motion.h2>
@@ -49,6 +64,7 @@ export function StackingSection({
   titleColor,
   textColor = "#0f172a",
   id,
+  allowOverflow = false,
 }: StackingSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -56,7 +72,7 @@ export function StackingSection({
     <div
       ref={ref}
       id={id}
-      className={`relative min-h-screen flex items-center justify-center overflow-hidden ${bgColorClass || ""}`}
+      className={`relative min-h-screen flex items-center justify-center ${allowOverflow ? "overflow-visible" : "overflow-hidden"} ${bgColorClass || ""}`}
       style={{
         backgroundColor: bgColorClass ? undefined : bgColor,
         color: textColor,
@@ -105,12 +121,10 @@ export function StackingSection({
         ))}
       </div>
 
-      {/* Title Background with Right-to-Left Scroll Animation */}
       {title && (
         <TitleParallax title={title} titleColor={titleColor} />
       )}
 
-      {/* Content Animation: Zoom and Slide */}
       <motion.div
         className="relative z-10 w-full"
         initial={{ opacity: 0, scale: 0.9, y: 100 }}
@@ -121,7 +135,6 @@ export function StackingSection({
         {children}
       </motion.div>
 
-      {/* Bottom gradient */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background/80 to-transparent pointer-events-none" />
     </div>
   );

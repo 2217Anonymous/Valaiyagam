@@ -59,9 +59,9 @@ export function Gallery() {
   const rightColImages = filteredImages.filter((_, i) => i % 2 !== 0);
 
   return (
-    <section id="gallery" className="py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+    <section id="gallery" className="py-16 sm:py-20 lg:py-24 bg-background">
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
 
           {/* Left Column: Title, Filters, Even Images */}
           <div className="flex flex-col space-y-12">
@@ -73,14 +73,14 @@ export function Gallery() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-5xl md:text-7xl font-black uppercase text-foreground leading-[0.9]">
+                <h2 className="heading-section uppercase text-foreground leading-[0.9]">
                   OUR <br />
                   AMAZING PORTFOLIO
                 </h2>
               </motion.div>
 
               {/* Filter Tabs */}
-              <div className="flex flex-wrap gap-x-8 gap-y-4">
+              <div className="flex flex-wrap gap-x-4 sm:gap-x-8 gap-y-3">
                 {categories.map((cat) => (
                   <button
                     key={cat}
@@ -196,7 +196,7 @@ export function Gallery() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="relative w-full max-w-6xl h-[85vh] rounded-lg overflow-hidden"
+              className="relative w-full max-w-6xl max-h-[85dvh] aspect-[4/3] sm:aspect-auto sm:h-[85dvh] rounded-lg overflow-hidden"
               onClick={(e) => e.stopPropagation()} // Prevent close on image click
             >
               <Image

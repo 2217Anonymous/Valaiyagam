@@ -25,9 +25,9 @@ export function EmployeesTable({
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-white">Employees</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-white">Employees</h1>
           <p className="text-slate-400 mt-1">
             Manage your team and their documents.
           </p>
@@ -42,7 +42,7 @@ export function EmployeesTable({
 
       <div className="glass-card rounded-2xl overflow-hidden border border-slate-800/50">
         <div className="overflow-x-auto">
-          <table className="w-full text-left">
+          <table className="w-full text-left text-sm sm:text-base min-w-[600px]">
             <thead className="bg-slate-900/50 text-slate-400 font-medium">
               <tr>
                 <th className="px-6 py-4">Name</th>

@@ -51,9 +51,9 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+    <section id="contact" className="py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -62,7 +62,7 @@ export function Contact() {
             className="space-y-8"
           >
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
                 Let's Build Something{" "}
                 <span className="text-primary">Great</span>
               </h2>
@@ -108,7 +108,7 @@ export function Contact() {
             </div>
 
             {/* Embed Map */}
-            <div className="h-64 md:h-80 w-full rounded-2xl overflow-hidden glass-card border-primary/20">
+            <div className="h-48 sm:h-64 md:h-80 w-full rounded-2xl overflow-hidden glass-card border-primary/20">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d101408.2171124653!2d-122.151307!3d37.413754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb7a33903147f%3A0xc6307da43198078c!2sSilicon%20Valley%2C%20CA!5e0!3m2!1sen!2sus!4v1705600000000!5m2!1sen!2sus"
                 width="100%"

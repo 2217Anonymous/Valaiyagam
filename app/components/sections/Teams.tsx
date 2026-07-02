@@ -54,9 +54,9 @@ export function Teams() {
   };
 
   return (
-    <section id="teams" className="py-24 bg-primary text-white overflow-hidden relative">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col lg:flex-row gap-12 items-center">
+    <section id="teams" className="py-16 sm:py-20 lg:py-24 bg-primary text-white overflow-hidden relative">
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
 
           {/* Left Side: Content & Navigation */}
           <div className="lg:w-1/3 space-y-8 relative z-10">
@@ -66,7 +66,7 @@ export function Teams() {
               viewport={{ once: true, margin: "-10%" }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <h2 className="text-5xl md:text-6xl font-black uppercase leading-tight mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase leading-tight mb-4 sm:mb-6">
                 We Have <br />
                 Amazing Team
               </h2>
@@ -104,7 +104,7 @@ export function Teams() {
                 {team.map((member, idx) => (
                   <div
                     key={idx}
-                    className="min-w-full md:min-w-[calc(50%-12px)] bg-white rounded-none shadow-xl overflow-hidden group"
+                    className="min-w-full sm:min-w-[calc(50%-12px)] flex-shrink-0 bg-white rounded-none shadow-xl overflow-hidden group"
                   >
                     <div className="aspect-square relative overflow-hidden">
                       <Image
