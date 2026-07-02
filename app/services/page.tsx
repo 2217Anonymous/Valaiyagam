@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
 import { CheckCircle2, Zap } from "lucide-react";
 import { BRAND_NAME } from "@/app/lib/themes";
+import { createPageMetadata } from "@/app/lib/seo";
+import { Breadcrumbs } from "@/app/components/seo/Breadcrumbs";
 import {
   marketingServices,
   technologyServices,
   type ServiceItem,
 } from "@/app/data/services";
 
-export const metadata: Metadata = {
-  title: `Digital Marketing Services | ${BRAND_NAME}`,
+export const metadata: Metadata = createPageMetadata({
+  title: "Digital Marketing & Technology Services",
   description:
-    "Full-service technology and digital marketing solutions including Social Media Marketing, SEO, SEM, Content Marketing, Email Marketing, Influencer Marketing, Affiliate Marketing, and Online Advertising.",
+    "Full-service technology and digital marketing solutions including Social Media Marketing, SEO, SEM, Content Marketing, Email Marketing, Influencer Marketing, and Online Advertising.",
+  path: "/services",
   keywords: [
     "Social Media Marketing",
     "SEO Services",
@@ -21,14 +24,8 @@ export const metadata: Metadata = {
     "Affiliate Marketing",
     "Online Advertising",
     "Digital Marketing Agency",
-    "Valaiyagam Solution",
   ],
-  openGraph: {
-    title: `Digital Marketing Services | ${BRAND_NAME}`,
-    description:
-      "Enterprise technology and digital marketing services to accelerate growth, visibility, and conversions.",
-  },
-};
+});
 
 function ServicePageCard({ service }: { service: ServiceItem }) {
   const Icon = service.icon;
@@ -66,7 +63,14 @@ function ServicePageCard({ service }: { service: ServiceItem }) {
 export default function ServicesPage() {
   return (
     <div className="pt-24 pb-20 px-4 sm:px-6 min-h-screen">
-      <div className="max-w-7xl mx-auto text-center mb-12 sm:mb-16">
+      <div className="max-w-7xl mx-auto">
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Services" },
+          ]}
+        />
+        <div className="text-center mb-12 sm:mb-16">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-4">
           <Zap className="w-3 h-3 fill-primary" /> Our Expertise
         </div>
@@ -78,6 +82,7 @@ export default function ServicesPage() {
           data-driven digital marketing campaigns that drive growth, visibility,
           and measurable ROI.
         </p>
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto mb-16">

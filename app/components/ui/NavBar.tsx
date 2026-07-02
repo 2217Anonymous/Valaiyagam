@@ -3,11 +3,14 @@
 import React, { useEffect, useState, useCallback, useRef } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, Facebook, Instagram, Twitter, X } from "lucide-react";
 import { Button } from "./Button";
 import { Logo } from "./Logo";
 
 export function NavBar() {
+    const pathname = usePathname();
+    const isHome = pathname === "/" || pathname === "";
     const headerRef = useRef<HTMLElement>(null);
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -71,12 +74,28 @@ export function NavBar() {
 
     const closeMenu = useCallback(() => setIsMobileMenuOpen(false), []);
 
-    const scrollToSection = (
+    type NavLink = {
+        name: string;
+        href: string;
+        sectionId?: string;
+    };
+
+    const navLinks: NavLink[] = [
+        { name: "home", href: "/", sectionId: "home" },
+        { name: "about", href: "/#about", sectionId: "about" },
+        { name: "services", href: "/services/" },
+        { name: "work", href: "/#gallery", sectionId: "gallery" },
+        { name: "team", href: "/teams/" },
+        { name: "careers", href: "/careers/" },
+        { name: "contact", href: "/#contact", sectionId: "contact" },
+    ];
+
+    const handleSectionClick = (
         e: React.MouseEvent<HTMLAnchorElement>,
-        id: string,
+        sectionId: string,
     ) => {
+        if (!isHome) return;
         e.preventDefault();
-        const sectionId = id.replace(/^#/, "");
         const element = document.getElementById(sectionId);
         if (element) {
             element.scrollIntoView({ behavior: "smooth" });
@@ -84,15 +103,6 @@ export function NavBar() {
             setActiveSection(sectionId);
         }
     };
-
-    const navLinks = [
-        { name: "home", to: "#home" },
-        { name: "about", to: "#about" },
-        { name: "services", to: "#services" },
-        { name: "work", to: "#gallery" },
-        { name: "careers", to: "#careers" },
-        { name: "contact", to: "#contact" },
-    ];
 
     const mobileMenu =
         mounted && isMobileMenuOpen
@@ -110,13 +120,22 @@ export function NavBar() {
                       >
                           <div className="flex flex-col py-4 px-4 sm:px-6">
                               {navLinks.map((item) => {
-                                  const sectionId = item.to.replace("#", "");
-                                  const isActive = activeSection === sectionId;
+                                  const isActive =
+                                      item.sectionId != null &&
+                                      activeSection === item.sectionId;
                                   return (
-                                      <a
+                                      <Link
                                           key={item.name}
-                                          href={item.to}
-                                          onClick={(e) => scrollToSection(e, item.to)}
+                                          href={item.href}
+                                          onClick={
+                                              item.sectionId
+                                                  ? (e) =>
+                                                        handleSectionClick(
+                                                            e,
+                                                            item.sectionId!,
+                                                        )
+                                                  : closeMenu
+                                          }
                                           className={`text-lg font-semibold capitalize py-4 px-2 border-b border-slate-100 transition-colors ${
                                               isActive
                                                   ? "text-primary"
@@ -124,18 +143,18 @@ export function NavBar() {
                                           }`}
                                       >
                                           {item.name}
-                                      </a>
+                                      </Link>
                                   );
                               })}
-                              <a
-                                  href="#contact"
-                                  onClick={(e) => scrollToSection(e, "contact")}
+                              <Link
+                                  href="/#contact"
+                                  onClick={(e) => handleSectionClick(e, "contact")}
                                   className="mt-6"
                               >
                                   <Button className="rounded-full nav-contact-btn border-0 px-10 h-12 font-bold w-full">
                                       contact
                                   </Button>
-                              </a>
+                              </Link>
                               <div className="flex items-center justify-center gap-6 mt-8 pt-4 border-t border-slate-100 md:hidden">
                                   <Facebook className="w-5 h-5 cursor-pointer text-slate-800 hover:text-primary transition-colors" />
                                   <Twitter className="w-5 h-5 cursor-pointer text-slate-800 hover:text-primary transition-colors" />
@@ -162,8 +181,8 @@ export function NavBar() {
                 <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
                     <div className="flex items-center justify-between gap-4">
                         <Link
-                            href="#home"
-                            onClick={(e) => scrollToSection(e, "#home")}
+                            href="/"
+                            onClick={(e) => handleSectionClick(e, "home")}
                             className="flex items-center relative z-[102] shrink-0 min-w-0"
                         >
                             <span className="hidden lg:block">
@@ -185,13 +204,22 @@ export function NavBar() {
                         <div className="hidden lg:flex items-center gap-8 xl:gap-10">
                             <div className="flex items-center gap-6 xl:gap-8">
                                 {navLinks.map((item) => {
-                                    const sectionId = item.to.replace("#", "");
-                                    const isActive = activeSection === sectionId;
+                                    const isActive =
+                                        item.sectionId != null &&
+                                        activeSection === item.sectionId;
                                     return (
-                                        <a
+                                        <Link
                                             key={item.name}
-                                            href={item.to}
-                                            onClick={(e) => scrollToSection(e, item.to)}
+                                            href={item.href}
+                                            onClick={
+                                                item.sectionId
+                                                    ? (e) =>
+                                                          handleSectionClick(
+                                                              e,
+                                                              item.sectionId!,
+                                                          )
+                                                    : undefined
+                                            }
                                             className={`text-sm font-semibold capitalize transition-colors relative whitespace-nowrap ${
                                                 isActive
                                                     ? "text-primary nav-link-active"
@@ -202,19 +230,22 @@ export function NavBar() {
                                             {isActive && (
                                                 <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />
                                             )}
-                                        </a>
+                                        </Link>
                                     );
                                 })}
                             </div>
 
-                            <a href="#contact" onClick={(e) => scrollToSection(e, "contact")}>
+                            <Link
+                                href="/#contact"
+                                onClick={(e) => handleSectionClick(e, "contact")}
+                            >
                                 <Button
                                     size="sm"
                                     className="rounded-full nav-contact-btn border-0 px-8 h-10 font-bold"
                                 >
                                     contact
                                 </Button>
-                            </a>
+                            </Link>
                         </div>
 
                         <div className="flex items-center gap-3 sm:gap-6 relative z-[102]">

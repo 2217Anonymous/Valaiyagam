@@ -1,19 +1,32 @@
 import { Hero } from "./components/sections/Hero";
 import { Services } from "./components/sections/Services";
-import { Teams } from "./components/sections/Teams";
 import { Careers } from "./components/sections/Careers";
 import { Gallery } from "./components/sections/Gallery";
 import { Contact } from "./components/sections/Contact";
 import { About } from "./components/sections/About";
 import { TerminalSection } from "./components/sections/TerminalSection";
-import { Marquee } from "./components/ui/Marquee";
 import { AnimatedCursor } from "./components/ui/AnimatedCursor";
 import { StackingSection } from "./components/ui/StackingSection";
-import { Cpu, Database, Cloud, Code, Smartphone, Shield, Facebook, Twitter as XIcon, Linkedin, Instagram, Mail, MapPin, ArrowRight } from "lucide-react";
+import { Facebook, Twitter as XIcon, Linkedin, Instagram, Mail, MapPin, ArrowRight } from "lucide-react";
+import type { Metadata } from "next";
 
 import { BRAND_NAME } from "./lib/themes";
+import { createPageMetadata, SITE_CONFIG } from "./lib/seo";
 import { Logo } from "./components/ui/Logo";
 import { FooterIllustration } from "./components/ui/FooterIllustration";
+
+export const metadata: Metadata = createPageMetadata({
+  title: `${BRAND_NAME} | Software Development & Digital Marketing Agency`,
+  description: SITE_CONFIG.description,
+  path: "/",
+  keywords: [
+    "Valaiyagam",
+    "IT services India",
+    "digital transformation",
+    "SEO agency",
+    "social media marketing",
+  ],
+});
 
 export default function Home() {
 
