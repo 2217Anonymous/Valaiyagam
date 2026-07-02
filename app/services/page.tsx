@@ -65,15 +65,15 @@ function ServicePageCard({ service }: { service: ServiceItem }) {
 
 export default function ServicesPage() {
   return (
-    <div className="pt-24 pb-20 px-6 min-h-screen">
-      <div className="max-w-7xl mx-auto text-center mb-16">
+    <div className="pt-24 pb-20 px-4 sm:px-6 min-h-screen">
+      <div className="max-w-7xl mx-auto text-center mb-12 sm:mb-16">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-4">
           <Zap className="w-3 h-3 fill-primary" /> Our Expertise
         </div>
-        <h1 className="text-5xl font-bold text-gradient mb-6">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gradient mb-4 sm:mb-6">
           Technology & Digital Marketing Services
         </h1>
-        <p className="text-xl text-slate-400 max-w-3xl mx-auto">
+        <p className="text-base sm:text-lg lg:text-xl text-slate-400 max-w-3xl mx-auto">
           {BRAND_NAME} delivers enterprise-grade technology solutions and
           data-driven digital marketing campaigns that drive growth, visibility,
           and measurable ROI.

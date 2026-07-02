@@ -49,10 +49,10 @@ export function About() {
   return (
     <section
       id="about"
-      className="py-24 relative overflow-hidden"
+      className="py-16 sm:py-20 lg:py-24 relative overflow-visible"
     >
-      <div className="max-w-[95%] mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
+      <div className="w-full max-w-[95%] mx-auto px-4 sm:px-6 relative z-10">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 xl:gap-16 items-center">
           {/* Left Side: Text and Headings */}
           <div className="lg:w-1/2 space-y-8">
             <motion.div
@@ -64,10 +64,10 @@ export function About() {
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono font-bold uppercase tracking-widest leading-none">
                 <Sparkles className="w-3 h-3" /> Core Identity
               </div>
-              <h2 className="text-5xl md:text-7xl font-black leading-none">
+              <h2 className="heading-section">
                 Who <span className="text-primary italic">We Are</span>
               </h2>
-              <p className="text-xl text-muted-foreground leading-relaxed">
+              <p className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed">
                 {BRAND_NAME.toUpperCase()} is a leading provider of innovative technology solutions for businesses of all sizes.
                 With a focus on delivering results, we use the latest technologies and best practices to help our clients
                 achieve their goals. Our team of experts is dedicated to providing exceptional service and delivering
@@ -116,13 +116,12 @@ export function About() {
           </div>
 
           {/* Right Side: Interactive Cobe Globe */}
-          <div className="lg:w-1/2 relative flex justify-center items-center h-[600px]">
-            {/* Valaiyagam logo watermark inside/behind globe */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 ml-24 mt-12">
+          <div className="lg:w-1/2 relative flex justify-center items-center h-[380px] sm:h-[480px] md:h-[560px] lg:h-[600px] w-full overflow-visible shrink-0">
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 lg:ml-16 lg:mt-8">
               <Logo variant="watermark" />
             </div>
 
-            <div className="relative w-full max-w-[700px] aspect-square select-none z-10">
+            <div className="relative w-full max-w-[520px] sm:max-w-[600px] lg:max-w-[700px] aspect-square select-none z-10 mx-auto overflow-visible">
               <WorldGlobe />
             </div>
           </div>

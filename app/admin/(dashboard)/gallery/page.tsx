@@ -53,7 +53,7 @@ export default function GalleryAdmin() {
     <div className="space-y-8 animate-in fade-in duration-500">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-4xl font-black tracking-tight">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight">
             Gallery <span className="text-primary">Management</span>
           </h1>
           <p className="text-muted-foreground mt-1">
@@ -92,7 +92,8 @@ export default function GalleryAdmin() {
 
       {/* Modern Table / Grid View */}
       <div className="glass-card rounded-2xl border border-border overflow-hidden">
-        <table className="w-full text-left">
+        <div className="overflow-x-auto">
+        <table className="w-full text-left min-w-[640px]">
           <thead className="bg-muted/50 border-b border-border">
             <tr>
               <th className="px-6 py-4 font-bold">Preview</th>
@@ -146,6 +147,7 @@ export default function GalleryAdmin() {
             </AnimatePresence>
           </tbody>
         </table>
+        </div>
         {filteredItems.length === 0 && (
           <div className="py-20 text-center space-y-4">
             <div className="w-20 h-20 bg-muted rounded-full flex items-center justify-center mx-auto">

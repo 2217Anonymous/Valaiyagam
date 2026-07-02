@@ -34,22 +34,22 @@ export function TerminalSection() {
   }, []);
 
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-16 sm:py-20 lg:py-24 relative overflow-hidden">
       {/* Background Atmosphere Rings */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/2 left-[25%] -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] border border-slate-900/3 rounded-full" />
-        <div className="absolute top-1/2 left-[25%] -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] border border-slate-900/5 rounded-full" />
-        <div className="absolute top-1/2 left-[25%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-slate-900/[0.07] rounded-full" />
+      <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
+        <div className="absolute top-1/2 left-[25%] -translate-x-1/2 -translate-y-1/2 w-[min(900px,100vw)] h-[min(900px,100vw)] border border-slate-900/3 rounded-full" />
+        <div className="absolute top-1/2 left-[25%] -translate-x-1/2 -translate-y-1/2 w-[min(700px,85vw)] h-[min(700px,85vw)] border border-slate-900/5 rounded-full" />
+        <div className="absolute top-1/2 left-[25%] -translate-x-1/2 -translate-y-1/2 w-[min(500px,70vw)] h-[min(500px,70vw)] border border-slate-900/[0.07] rounded-full" />
       </div>
 
-      <div className="w-full px-4 md:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-32 items-center">
+      <div className="w-full px-4 md:px-8 lg:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 xl:gap-32 items-center">
 
         {/* Left Column: Gauge Visual with All 9 Technologies */}
-        <div className="relative h-[700px] w-full flex items-center justify-center">
+        <div className="relative min-h-[420px] sm:min-h-[520px] md:min-h-[600px] lg:min-h-[700px] w-full flex items-center justify-center overflow-hidden">
 
           {/* The Arch & Gauge SVG */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-visible">
-            <svg viewBox="0 0 500 500" className="w-[600px] h-[600px] overflow-visible">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+            <svg viewBox="0 0 500 500" className="w-full max-w-[600px] h-auto aspect-square overflow-visible">
               <g className="opacity-10">
                 <line x1="364.7" y1="135.3" x2="374.7" y2="135.3" stroke="#000" strokeWidth="1" />
                 <line x1="370" y1="145" x2="380" y2="145" stroke="#000" strokeWidth="1" />
@@ -88,17 +88,17 @@ export function TerminalSection() {
           </div>
 
           {/* Logo Watermark Background */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none scale-150">
-            <Logo variant="watermark" className="opacity-100 w-64 h-64" />
+          <div className="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none scale-100 sm:scale-125 lg:scale-150">
+            <Logo variant="watermark" className="opacity-100 w-40 h-40 sm:w-52 sm:h-52 lg:w-64 lg:h-64" />
           </div>
 
           {/* Central Text Block */}
-          <div className="relative z-10 text-center max-w-[320px] pointer-events-auto">
-            <h4 className="text-3xl font-bold text-[#0F172A] mb-2 tracking-tight">Built with the</h4>
+          <div className="relative z-10 text-center max-w-[280px] sm:max-w-[320px] pointer-events-auto px-2">
+            <h4 className="text-2xl sm:text-3xl font-bold text-[#0F172A] mb-2 tracking-tight">Built with the</h4>
 
             <div className="relative inline-block mb-4 px-3 py-1 mt-1">
               <div className="absolute inset-0 bg-[#FFDDC7] -rotate-1 rounded-sm" />
-              <h3 className="relative text-5xl font-black text-[#0F172A] uppercase tracking-tighter">
+              <h3 className="relative text-3xl sm:text-4xl lg:text-5xl font-black text-[#0F172A] uppercase tracking-tighter">
                 FULL Stack
               </h3>
             </div>
@@ -110,8 +110,8 @@ export function TerminalSection() {
             </p>
           </div>
 
-          {/* Technologies in a Rotating Orbit */}
-          <div className="absolute inset-0 pointer-events-none">
+          {/* Technologies in a Rotating Orbit — hidden on very small screens */}
+          <div className="absolute inset-0 pointer-events-none hidden sm:block">
             <motion.div
               className="relative w-full h-full"
               animate={{ rotate: 360 }}
@@ -156,7 +156,7 @@ export function TerminalSection() {
               <div className="h-px w-12 bg-primary" />
               <span className="text-primary font-bold tracking-[0.3em] uppercase text-xs">Infrastructure</span>
             </div>
-            <h2 className="text-[2.5rem] md:text-5xl font-black text-slate-900 leading-[1.1] tracking-tighter">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 leading-[1.1] tracking-tighter">
               OPTIMIZED FOR <br />
               THE NEXT GEN
             </h2>

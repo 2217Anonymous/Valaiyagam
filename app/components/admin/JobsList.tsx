@@ -16,8 +16,8 @@ export function JobsList({ initialJobs }: { initialJobs: Job[] }) {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold text-white">Jobs & Careers</h1>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <h1 className="text-2xl sm:text-3xl font-bold text-white">Jobs & Careers</h1>
         <Link href="/admin/jobs/new">
           <Button className="gap-2">
             <Plus className="w-4 h-4" />
@@ -35,11 +35,11 @@ export function JobsList({ initialJobs }: { initialJobs: Job[] }) {
           jobs.map((job) => (
             <div
               key={job.id}
-              className="glass-card p-6 rounded-xl flex items-center justify-between group"
+              className="glass-card p-4 sm:p-6 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-4 group"
             >
-              <div>
-                <div className="flex items-center gap-3">
-                  <h3 className="text-xl font-bold text-white">{job.title}</h3>
+              <div className="min-w-0">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                  <h3 className="text-lg sm:text-xl font-bold text-white">{job.title}</h3>
                   <span className="text-xs font-mono bg-slate-800 px-2 py-1 rounded text-slate-400">
                     {job.code}
                   </span>
@@ -53,7 +53,7 @@ export function JobsList({ initialJobs }: { initialJobs: Job[] }) {
                     {job.status}
                   </span>
                 </div>
-                <div className="flex items-center gap-4 mt-2 text-sm text-slate-400">
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-2 text-sm text-slate-400">
                   <span className="flex items-center gap-1">
                     <Briefcase className="w-3 h-3" /> {job.department}
                   </span>
@@ -64,7 +64,7 @@ export function JobsList({ initialJobs }: { initialJobs: Job[] }) {
                 </div>
               </div>
 
-              <div className="flex items-center gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+              <div className="flex items-center gap-2 shrink-0">
                 <Button
                   variant="ghost"
                   size="sm"

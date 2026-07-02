@@ -28,12 +28,12 @@ export function WorldGlobe() {
         onResize();
 
         const globe = createGlobe(canvasRef.current, {
-            devicePixelRatio: 3,
-            width: 1180 * 2,
-            height: 1180 * 2,
+            devicePixelRatio: 2,
+            width: 1000 * 2,
+            height: 1000 * 2,
             phi: 0,
             theta: 0.3,
-            scale: 0.95, // Slightly reduced to prevent edge clipping (line cut)
+            scale: 0.82,
             dark: 0,
             diffuse: 1.2,
             mapSamples: 16000,
@@ -62,11 +62,11 @@ export function WorldGlobe() {
     }, []);
 
     return (
-        <div className="relative w-full h-full flex items-center mt-20 justify-center overflow-visible">
+        <div className="relative w-full h-full flex items-center justify-center overflow-visible pt-8 sm:pt-12 lg:pt-16">
             <canvas
                 ref={canvasRef}
-                style={{ width: "100%", height: "100%", maxWidth: "800px", aspectRatio: 1 }}
-                className="w-full h-auto opacity-90 transition-opacity duration-1000 ease-in-out cursor-grab active:cursor-grabbing outline-none"
+                style={{ width: "100%", height: "100%", aspectRatio: "1 / 1" }}
+                className="w-full h-full max-w-full opacity-90 transition-opacity duration-1000 ease-in-out cursor-grab active:cursor-grabbing outline-none"
                 onPointerDown={(e) => {
                     pointerInteracting.current = { x: e.clientX, y: e.clientY };
                     if (canvasRef.current) canvasRef.current.style.cursor = 'grabbing';

@@ -25,7 +25,7 @@ export default async function JobDetailsPage({ params }: PageProps) {
   }
 
   return (
-    <div className="pt-24 pb-20 px-6 min-h-screen">
+    <div className="pt-24 pb-20 px-4 sm:px-6 min-h-screen">
       <div className="max-w-4xl mx-auto">
         <Link href="/careers" className="inline-block mb-8">
           <Button
@@ -39,10 +39,10 @@ export default async function JobDetailsPage({ params }: PageProps) {
         </Link>
 
         <div className="glass-card rounded-3xl overflow-hidden mb-12">
-          <div className="p-10 border-b border-slate-800/50 bg-gradient-to-r from-primary/10 to-transparent">
+          <div className="p-6 sm:p-8 lg:p-10 border-b border-slate-800/50 bg-gradient-to-r from-primary/10 to-transparent">
             <div className="flex flex-wrap items-start justify-between gap-6">
               <div>
-                <h1 className="text-4xl font-bold text-white mb-4">
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
                   {job.title}
                 </h1>
                 <div className="flex flex-wrap items-center gap-6 text-slate-300">
@@ -66,7 +66,7 @@ export default async function JobDetailsPage({ params }: PageProps) {
             </div>
           </div>
 
-          <div className="p-10 space-y-8">
+          <div className="p-6 sm:p-8 lg:p-10 space-y-8">
             <section>
               <h3 className="text-xl font-bold text-white mb-4">
                 About the Role
@@ -96,7 +96,7 @@ export default async function JobDetailsPage({ params }: PageProps) {
           </div>
         </div>
 
-        <div className="glass-card p-10 rounded-3xl">
+        <div className="glass-card p-6 sm:p-8 lg:p-10 rounded-3xl">
           <div className="mb-8">
             <h2 className="text-2xl font-bold text-white">
               Apply for this position

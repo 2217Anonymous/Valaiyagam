@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "./components/theme-provider";
 import { ToastProvider } from "./context/ToastContext";
@@ -17,6 +17,12 @@ const geistMono = Geist_Mono({
 });
 
 const brandTheme = getActiveTheme();
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   title: `${BRAND_NAME} | Innovating the Future`,
