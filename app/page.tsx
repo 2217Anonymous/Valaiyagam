@@ -63,7 +63,6 @@ export default function Home() {
             index={index}
             total={sections.length}
             title={section.title}
-            allowOverflow={section.id === "about"}
           >
             {section.component}
           </StackingSection>
