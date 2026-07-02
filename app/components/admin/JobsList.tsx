@@ -17,7 +17,7 @@ export function JobsList({ initialJobs }: { initialJobs: Job[] }) {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <h1 className="text-2xl sm:text-3xl font-bold text-white">Jobs & Careers</h1>
+        <h1 className="admin-page-title">Jobs & Careers</h1>
         <Link href="/admin/jobs/new">
           <Button className="gap-2">
             <Plus className="w-4 h-4" />
@@ -28,19 +28,19 @@ export function JobsList({ initialJobs }: { initialJobs: Job[] }) {
 
       <div className="grid gap-4">
         {jobs.length === 0 ? (
-          <div className="text-center p-12 glass-card rounded-2xl">
-            <p className="text-slate-400">No jobs posted yet.</p>
+          <div className="admin-card p-12 text-center">
+            <p className="text-slate-500">No jobs posted yet.</p>
           </div>
         ) : (
           jobs.map((job) => (
             <div
               key={job.id}
-              className="glass-card p-4 sm:p-6 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-4 group"
+              className="admin-card p-4 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 group"
             >
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-                  <h3 className="text-lg sm:text-xl font-bold text-white">{job.title}</h3>
-                  <span className="text-xs font-mono bg-slate-800 px-2 py-1 rounded text-slate-400">
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-900">{job.title}</h3>
+                  <span className="text-xs font-mono bg-slate-100 px-2 py-1 rounded text-slate-500">
                     {job.code}
                   </span>
                   <span
@@ -53,7 +53,7 @@ export function JobsList({ initialJobs }: { initialJobs: Job[] }) {
                     {job.status}
                   </span>
                 </div>
-                <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-2 text-sm text-slate-400">
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-2 text-sm text-slate-500">
                   <span className="flex items-center gap-1">
                     <Briefcase className="w-3 h-3" /> {job.department}
                   </span>

@@ -21,65 +21,65 @@ export default function NewJobPage() {
             <ArrowLeft className="w-5 h-5" />
           </Button>
         </Link>
-        <h1 className="text-2xl font-bold text-white">Post New Job</h1>
+        <h1 className="admin-page-title">Post New Job</h1>
       </div>
 
-      <div className="glass-card p-8 rounded-2xl">
+      <div className="admin-card p-8">
         <form action={action} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-300">
+              <label className="admin-label">
                 Job Title
               </label>
               <input
                 name="title"
                 required
-                className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-white outline-none focus:ring-2 focus:ring-primary/50"
+                className="admin-input"
                 placeholder="e.g. Senior Frontend Engineer"
               />
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-300">
+              <label className="admin-label">
                 Job Code
               </label>
               <input
                 name="code"
                 required
-                className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-white outline-none focus:ring-2 focus:ring-primary/50"
+                className="admin-input"
                 placeholder="e.g. ENG-01"
               />
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-300">
+              <label className="admin-label">
                 Department
               </label>
               <input
                 name="department"
                 required
-                className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-white outline-none focus:ring-2 focus:ring-primary/50"
+                className="admin-input"
                 placeholder="e.g. Engineering"
               />
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-300">
+              <label className="admin-label">
                 Location
               </label>
               <input
                 name="location"
                 required
-                className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-white outline-none focus:ring-2 focus:ring-primary/50"
+                className="admin-input"
                 placeholder="e.g. Remote / New York"
               />
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-300">Type</label>
+              <label className="admin-label">Type</label>
               <select
                 name="type"
-                className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-white outline-none focus:ring-2 focus:ring-primary/50 appearance-none"
+                className="admin-input appearance-none"
               >
                 <option>Full-time</option>
                 <option>Part-time</option>
@@ -90,27 +90,27 @@ export default function NewJobPage() {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-300">
+            <label className="admin-label">
               Job Description
             </label>
             <textarea
               name="description"
               required
               rows={4}
-              className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-white outline-none focus:ring-2 focus:ring-primary/50"
+              className="admin-input min-h-[120px] resize-y"
               placeholder="Describe the role..."
             />
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-300">
+            <label className="admin-label">
               Requirements (One per line)
             </label>
             <textarea
               name="requirements"
               required
               rows={4}
-              className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-white outline-none focus:ring-2 focus:ring-primary/50"
+              className="admin-input min-h-[120px] resize-y"
               placeholder="- 5+ years of React experience&#10;- Knowledge of Next.js"
             />
           </div>

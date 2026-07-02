@@ -34,8 +34,8 @@ export default function NewEmployeePage() {
           </Button>
         </Link>
         <div>
-          <h1 className="text-2xl font-bold text-white">Add New Employee</h1>
-          <p className="text-slate-400 text-sm">
+          <h1 className="admin-page-title">Add New Employee</h1>
+          <p className="text-sm text-slate-500">
             Create a profile and upload documents.
           </p>
         </div>
@@ -44,65 +44,65 @@ export default function NewEmployeePage() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="glass-card p-8 rounded-2xl"
+        className="admin-card p-8"
       >
         <form action={action} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-300">
+              <label className="admin-label">
                 Full Name
               </label>
               <input
                 name="name"
                 required
-                className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-primary/50 outline-none"
+                className="admin-input"
                 placeholder="e.g. John Doe"
               />
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-300">
+              <label className="admin-label">
                 Email Address
               </label>
               <input
                 name="email"
                 type="email"
                 required
-                className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-primary/50 outline-none"
+                className="admin-input"
                 placeholder="john@valaiyagam.com"
               />
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-300">
+              <label className="admin-label">
                 Phone
               </label>
               <input
                 name="phone"
-                className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-primary/50 outline-none"
+                className="admin-input"
                 placeholder="+1 (555) 000-0000"
               />
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-300">
+              <label className="admin-label">
                 Role / Job Title
               </label>
               <input
                 name="role"
                 required
-                className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-primary/50 outline-none"
+                className="admin-input"
                 placeholder="e.g. Senior Developer"
               />
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-300">
+              <label className="admin-label">
                 Department
               </label>
               <select
                 name="department"
-                className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-primary/50 outline-none appearance-none"
+                className="admin-input appearance-none"
               >
                 <option>Engineering</option>
                 <option>Design</option>
@@ -113,12 +113,12 @@ export default function NewEmployeePage() {
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-300">
+              <label className="admin-label">
                 Status
               </label>
               <select
                 name="status"
-                className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-primary/50 outline-none appearance-none"
+                className="admin-input appearance-none"
               >
                 <option value="Active">Active</option>
                 <option value="Inactive">Inactive</option>
@@ -126,11 +126,11 @@ export default function NewEmployeePage() {
             </div>
           </div>
 
-          <div className="space-y-2 pt-4 border-t border-slate-800">
-            <label className="text-sm font-medium text-slate-300">
+          <div className="space-y-2 border-t border-slate-200 pt-4">
+            <label className="admin-label">
               Documents (PDF, Images)
             </label>
-            <div className="relative border-2 border-dashed border-slate-700 rounded-xl p-8 text-center hover:bg-white/5 transition-colors cursor-pointer group">
+            <div className="group relative cursor-pointer rounded-xl border-2 border-dashed border-slate-200 bg-slate-50 p-8 text-center transition-colors hover:border-primary/30 hover:bg-primary/5">
               <input
                 type="file"
                 name="documents"
@@ -139,7 +139,7 @@ export default function NewEmployeePage() {
                 className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
               />
               <Upload className="w-8 h-8 text-slate-500 mx-auto group-hover:text-primary transition-colors" />
-              <p className="mt-2 text-slate-400 text-sm">
+              <p className="mt-2 text-sm text-slate-500">
                 Drag & drop or click to upload
               </p>
             </div>
@@ -149,9 +149,9 @@ export default function NewEmployeePage() {
                 {files.map((file, i) => (
                   <div
                     key={i}
-                    className="flex items-center justify-between bg-slate-800/50 px-4 py-2 rounded-lg border border-slate-700"
+                    className="flex items-center justify-between rounded-lg border border-slate-200 bg-white px-4 py-2"
                   >
-                    <span className="text-sm text-slate-300 truncate max-w-[200px]">
+                    <span className="max-w-[200px] truncate text-sm text-slate-700">
                       {file.name}
                     </span>
                     <button
@@ -181,7 +181,7 @@ export default function NewEmployeePage() {
           </div>
 
           {state?.error && (
-            <div className="text-red-400 text-sm bg-red-500/10 p-3 rounded-lg">
+            <div className="rounded-lg bg-red-50 p-3 text-sm text-red-600">
               {state.error}
             </div>
           )}

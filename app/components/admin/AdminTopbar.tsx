@@ -1,7 +1,6 @@
 "use client";
 
 import { Menu } from "lucide-react";
-import { ThemeToggle } from "../ThemeToggle";
 import { LogoutButton } from "./LogoutButton";
 import { BRAND_SHORT } from "@/app/lib/themes";
 
@@ -11,25 +10,22 @@ interface AdminTopbarProps {
 
 export function AdminTopbar({ onMenuClick }: AdminTopbarProps) {
   return (
-    <header className="h-14 sm:h-16 bg-[#19272b] border-b border-primary/20 flex items-center justify-between px-4 sm:px-6 shrink-0 z-30 lg:hidden">
+    <header className="z-30 flex h-14 shrink-0 items-center justify-between border-b border-slate-100 bg-white px-4 sm:h-16 sm:px-6 lg:hidden">
       <div className="flex items-center gap-3">
         <button
           type="button"
           onClick={onMenuClick}
-          className="p-2 rounded-lg hover:bg-primary/10 text-primary transition-colors"
+          className="rounded-lg p-2 text-primary transition-colors hover:bg-primary/10"
           aria-label="Open menu"
         >
-          <Menu className="w-6 h-6" />
+          <Menu className="h-6 w-6" />
         </button>
-        <span className="text-sm font-black text-white tracking-tighter truncate">
-          {BRAND_SHORT.toUpperCase()}
+        <span className="truncate text-sm font-bold tracking-tight text-slate-900">
+          {BRAND_SHORT} Admin
         </span>
       </div>
 
-      <div className="flex items-center gap-2">
-        <ThemeToggle />
-        <LogoutButton className="p-2 text-red-400 hover:text-red-500 transition-colors" />
-      </div>
+      <LogoutButton className="p-2 text-red-500 transition-colors hover:text-red-600" />
     </header>
   );
 }

@@ -25,39 +25,39 @@ export function EmployeesTable({
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-white">Employees</h1>
-          <p className="text-slate-400 mt-1">
+          <h1 className="admin-page-title">Employees</h1>
+          <p className="mt-1 text-slate-500">
             Manage your team and their documents.
           </p>
         </div>
         <Link href="/admin/employees/new">
           <Button className="gap-2">
-            <Plus className="w-4 h-4" />
+            <Plus className="h-4 w-4" />
             Add Employee
           </Button>
         </Link>
       </div>
 
-      <div className="glass-card rounded-2xl overflow-hidden border border-slate-800/50">
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm sm:text-base min-w-[600px]">
-            <thead className="bg-slate-900/50 text-slate-400 font-medium">
+      <div className="admin-table-wrap">
+        <div className="overflow-x-auto bg-white">
+          <table className="w-full min-w-[600px] border-collapse bg-white text-left text-sm sm:text-base">
+            <thead className="admin-table-head">
               <tr>
-                <th className="px-6 py-4">Name</th>
-                <th className="px-6 py-4">Role</th>
-                <th className="px-6 py-4">Department</th>
-                <th className="px-6 py-4">Status</th>
-                <th className="px-6 py-4 text-right">Actions</th>
+                <th className="admin-table-th">Name</th>
+                <th className="admin-table-th">Role</th>
+                <th className="admin-table-th">Department</th>
+                <th className="admin-table-th">Status</th>
+                <th className="admin-table-th text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/50">
+            <tbody className="bg-white">
               {employees.length === 0 ? (
-                <tr>
+                <tr className="admin-table-row">
                   <td
                     colSpan={5}
-                    className="px-6 py-12 text-center text-slate-500"
+                    className="admin-table-td py-12 text-center text-slate-500"
                   >
                     No employees found. Click &quot;Add Employee&quot; to get
                     started.
@@ -65,17 +65,14 @@ export function EmployeesTable({
                 </tr>
               ) : (
                 employees.map((employee) => (
-                  <tr
-                    key={employee.id}
-                    className="hover:bg-white/5 transition-colors"
-                  >
-                    <td className="px-6 py-4">
+                  <tr key={employee.id} className="admin-table-row">
+                    <td className="admin-table-td">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center text-white font-bold">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">
                           {employee.name.charAt(0)}
                         </div>
                         <div>
-                          <div className="font-medium text-white">
+                          <div className="font-medium text-slate-900">
                             {employee.name}
                           </div>
                           <div className="text-xs text-slate-500">
@@ -84,31 +81,27 @@ export function EmployeesTable({
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-slate-300">
-                      {employee.role}
-                    </td>
-                    <td className="px-6 py-4 text-slate-300">
-                      {employee.department}
-                    </td>
-                    <td className="px-6 py-4">
+                    <td className="admin-table-td">{employee.role}</td>
+                    <td className="admin-table-td">{employee.department}</td>
+                    <td className="admin-table-td">
                       <span
-                        className={`px-3 py-1 rounded-full text-xs font-medium ${
+                        className={`rounded-full px-3 py-1 text-xs font-medium ${
                           employee.status === "Active"
-                            ? "bg-primary/10 text-primary border border-primary/20"
-                            : "bg-slate-500/10 text-slate-400 border border-slate-500/20"
+                            ? "bg-primary/10 text-primary"
+                            : "bg-slate-100 text-slate-500"
                         }`}
                       >
                         {employee.status}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-right">
+                    <td className="admin-table-td text-right">
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="text-red-400 hover:text-red-500 hover:bg-red-500/10"
+                        className="text-red-500 hover:bg-red-50 hover:text-red-600"
                         onClick={() => handleDelete(employee.id)}
                       >
-                        <Trash className="w-4 h-4" />
+                        <Trash className="h-4 w-4" />
                       </Button>
                     </td>
                   </tr>

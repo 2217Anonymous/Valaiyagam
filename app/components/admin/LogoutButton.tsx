@@ -10,7 +10,11 @@ interface LogoutButtonProps {
 
 export function LogoutButton({ className, label }: LogoutButtonProps) {
   return (
-    <button type="button" onClick={logout} className={className}>
+    <button
+      type="button"
+      onClick={logout}
+      className={`inline-flex items-center gap-2 ${className ?? ""}`}
+    >
       <LogOut className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
       {label && <span className="font-bold text-sm">{label}</span>}
     </button>

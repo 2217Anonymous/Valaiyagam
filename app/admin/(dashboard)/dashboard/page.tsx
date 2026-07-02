@@ -13,7 +13,7 @@ export default async function DashboardPage() {
       value: employees.length,
       icon: Users,
       trend: "+12%",
-      color: "from-blue-500 to-indigo-500",
+      color: "from-blue-500 to-cyan-500",
     },
     {
       label: "Open Positions",
@@ -27,22 +27,22 @@ export default async function DashboardPage() {
       value: teams.length,
       icon: Network,
       trend: "Stable",
-      color: "from-violet-500 to-purple-500",
+      color: "from-emerald-500 to-green-600",
     },
     {
       label: "Total Applications",
       value: 124,
       icon: Activity,
       trend: "+24%",
-      color: "from-pink-500 to-rose-500",
+      color: "from-lime-500 to-primary",
     },
   ];
 
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Dashboard</h1>
-        <p className="text-muted-foreground mt-2">
+        <h1 className="admin-page-title">Dashboard</h1>
+        <p className="mt-2 text-slate-500">
           Welcome back to the command center.
         </p>
       </div>
@@ -53,7 +53,7 @@ export default async function DashboardPage() {
           return (
             <div
               key={i}
-              className="glass-card p-6 rounded-2xl relative overflow-hidden group bg-card border border-border"
+              className="admin-stat-card group relative overflow-hidden"
             >
               <div
                 className={`absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity bg-gradient-to-br ${stat.color} rounded-bl-3xl`}
@@ -67,15 +67,15 @@ export default async function DashboardPage() {
                 >
                   <Icon className="w-6 h-6 text-white" />
                 </div>
-                <div className="text-muted-foreground font-medium text-sm">
+                <div className="text-sm font-medium text-slate-500">
                   {stat.label}
                 </div>
-                <div className="text-3xl font-bold text-foreground mt-1">
+                <div className="mt-1 text-3xl font-bold text-slate-900">
                   {stat.value}
                 </div>
-                <div className="text-xs text-primary mt-2 flex items-center gap-1 bg-primary/10 w-fit px-2 py-1 rounded-full">
+                <div className="mt-2 flex w-fit items-center gap-1 rounded-full bg-primary/10 px-2 py-1 text-xs text-primary">
                   {stat.trend}{" "}
-                  <span className="text-muted-foreground ml-1">
+                  <span className="ml-1 text-slate-400">
                     since last month
                   </span>
                 </div>
@@ -85,13 +85,13 @@ export default async function DashboardPage() {
         })}
       </div>
 
-      <div className="glass-card p-8 rounded-2xl bg-card border border-border">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="admin-card p-8">
+        <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <div className="space-y-2">
-            <h3 className="text-2xl font-bold text-foreground">
+            <h3 className="text-2xl font-bold text-slate-900">
               System Status: Optimal
             </h3>
-            <p className="text-muted-foreground">
+            <p className="text-slate-500">
               All services are running smoothly. JSON Database is active.
             </p>
           </div>

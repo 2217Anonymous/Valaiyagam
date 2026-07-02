@@ -76,7 +76,7 @@ export default function GalleryAdmin() {
           <input
             type="text"
             placeholder="Search images by title or category..."
-            className="w-full pl-12 pr-4 py-4 rounded-xl bg-card border border-border focus:ring-2 focus:ring-primary/50 outline-none transition-all"
+            className="admin-input pl-12 pr-4 py-4"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -91,19 +91,19 @@ export default function GalleryAdmin() {
       </div>
 
       {/* Modern Table / Grid View */}
-      <div className="glass-card rounded-2xl border border-border overflow-hidden">
-        <div className="overflow-x-auto">
-        <table className="w-full text-left min-w-[640px]">
-          <thead className="bg-muted/50 border-b border-border">
+      <div className="admin-table-wrap">
+        <div className="overflow-x-auto bg-white">
+        <table className="w-full min-w-[640px] border-collapse bg-white text-left">
+          <thead className="admin-table-head">
             <tr>
-              <th className="px-6 py-4 font-bold">Preview</th>
-              <th className="px-6 py-4 font-bold">Title</th>
-              <th className="px-6 py-4 font-bold">Category</th>
-              <th className="px-6 py-4 font-bold">Date</th>
-              <th className="px-6 py-4 font-bold text-right">Actions</th>
+              <th className="admin-table-th">Preview</th>
+              <th className="admin-table-th">Title</th>
+              <th className="admin-table-th">Category</th>
+              <th className="admin-table-th">Date</th>
+              <th className="admin-table-th text-right">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-border">
+          <tbody className="bg-white">
             <AnimatePresence>
               {filteredItems.map((item) => (
                 <motion.tr
@@ -111,10 +111,10 @@ export default function GalleryAdmin() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
-                  className="hover:bg-muted/30 transition-colors group"
+                  className="admin-table-row group"
                 >
-                  <td className="px-6 py-4">
-                    <div className="relative w-16 h-10 rounded-lg overflow-hidden border border-border">
+                  <td className="admin-table-td">
+                    <div className="relative h-10 w-16 overflow-hidden rounded-lg border border-slate-100">
                       <Image
                         src={item.url}
                         alt={item.title}
@@ -123,16 +123,18 @@ export default function GalleryAdmin() {
                       />
                     </div>
                   </td>
-                  <td className="px-6 py-4 font-medium">{item.title}</td>
-                  <td className="px-6 py-4">
-                    <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase">
+                  <td className="admin-table-td font-medium text-slate-900">
+                    {item.title}
+                  </td>
+                  <td className="admin-table-td">
+                    <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase text-primary">
                       {item.category}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-muted-foreground text-sm">
+                  <td className="admin-table-td text-sm text-slate-500">
                     {item.createdAt}
                   </td>
-                  <td className="px-6 py-4 text-right">
+                  <td className="admin-table-td text-right">
                     <button
                       onClick={() =>
                         setItems(items.filter((i) => i.id !== item.id))

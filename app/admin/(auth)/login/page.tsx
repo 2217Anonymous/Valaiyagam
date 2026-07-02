@@ -6,79 +6,81 @@ import { Button } from "@/app/components/ui/Button";
 import { Logo } from "@/app/components/ui/Logo";
 import { Lock, User } from "lucide-react";
 import { motion } from "framer-motion";
+import { BRAND_TAGLINE } from "@/app/lib/themes";
 
 export default function LoginPage() {
   const [state, action, isPending] = useActionState(loginAction, null);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-black p-4">
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-white p-4">
+      <div
+        className="pointer-events-none absolute inset-0 hero-diagonal-primary"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute inset-0 hero-diagonal-secondary"
+        aria-hidden
+      />
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="w-full max-w-md p-8 glass-card rounded-2xl"
+        className="relative z-10 w-full max-w-md rounded-2xl border border-slate-100 bg-white p-8 shadow-sm"
       >
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gradient">
-            Admin Portal
-          </h1>
-          <div className="flex justify-center mt-4 mb-2">
+        <div className="mb-8 text-center">
+          <h1 className="text-3xl font-bold text-gradient">Admin Portal</h1>
+          <div className="mt-4 mb-2 flex justify-center">
             <Logo variant="full" className="max-h-16" />
           </div>
-          <p className="text-slate-400 mt-2">
-            Sign in to manage Valaiyagam Solution
+          <p className="mt-2 text-slate-600">Sign in to manage Valaiyagam Solution</p>
+          <p className="mt-1 text-xs uppercase tracking-widest text-slate-400">
+            {BRAND_TAGLINE}
           </p>
         </div>
 
         <form action={action} className="space-y-6">
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-300">
-              Username
-            </label>
+            <label className="admin-label">Username</label>
             <div className="relative">
-              <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+              <User className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
               <input
                 name="username"
                 required
-                className="w-full bg-slate-900/50 border border-slate-800 rounded-xl pl-10 pr-4 py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-slate-600"
+                className="admin-input-icon"
                 placeholder="Enter username"
               />
             </div>
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-300">
-              Password
-            </label>
+            <label className="admin-label">Password</label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+              <Lock className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
               <input
                 name="password"
                 type="password"
                 required
-                className="w-full bg-slate-900/50 border border-slate-800 rounded-xl pl-10 pr-4 py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-slate-600"
+                className="admin-input-icon"
                 placeholder="Enter password"
               />
             </div>
           </div>
 
           {state?.error && (
-            <div className="text-red-400 text-sm text-center bg-red-500/10 py-2 rounded-lg border border-red-500/20">
+            <div className="rounded-lg border border-red-200 bg-red-50 py-2 text-center text-sm text-red-600">
               {state.error}
             </div>
           )}
 
           <Button
             type="submit"
-            className="w-full relative overflow-hidden group"
+            className="btn-primary-cta w-full rounded-full border-0 py-3 font-bold"
             disabled={isPending}
           >
-            <span className="relative z-10">
-              {isPending ? "Authenticating..." : "Sign In"}
-            </span>
-            <div className="absolute inset-0 nav-contact-btn opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            {isPending ? "Signing in..." : "Sign In"}
           </Button>
 
-          <div className="text-center text-xs text-slate-500 mt-4">
+          <div className="mt-4 text-center text-xs text-slate-400">
             Default: admin / admin123
           </div>
         </form>

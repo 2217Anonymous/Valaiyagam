@@ -30,11 +30,11 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <div className="flex h-screen bg-[#19272b] overflow-hidden text-foreground">
+    <div className="flex h-screen overflow-hidden bg-white text-slate-800">
       {sidebarOpen && (
         <button
           type="button"
-          className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-40 bg-slate-900/20 backdrop-blur-sm lg:hidden"
           aria-label="Close sidebar"
           onClick={closeSidebar}
         />
@@ -42,32 +42,38 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
 
       <Sidebar isOpen={sidebarOpen} onClose={closeSidebar} />
 
-      <div className="flex flex-1 flex-col min-w-0 overflow-hidden">
+      <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
         <AdminTopbar onMenuClick={() => setSidebarOpen(true)} />
 
-        <main className="flex-1 overflow-y-auto relative custom-scrollbar">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(34,197,94,0.08)_0%,transparent_50%)] pointer-events-none" />
-          <div className="absolute inset-0 bg-[#243135] opacity-[0.03] pointer-events-none mix-blend-overlay" />
+        <main className="relative flex-1 overflow-y-auto custom-scrollbar bg-white">
+          <div
+            className="pointer-events-none absolute inset-0 hero-diagonal-primary opacity-40"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute inset-0 hero-diagonal-secondary"
+            aria-hidden
+          />
 
-          <div className="p-4 sm:p-6 lg:p-10 max-w-7xl mx-auto pb-32 min-h-full relative z-10 transition-all">
+          <div className="relative z-10 mx-auto min-h-full max-w-7xl p-4 pb-28 transition-all sm:p-6 lg:p-10">
             {children}
           </div>
         </main>
       </div>
 
-      <div className="fixed bottom-0 right-0 left-0 lg:left-72 bg-black/80 backdrop-blur-xl border-t border-primary/20 h-10 flex items-center px-4 sm:px-10 gap-4 sm:gap-8 z-50">
+      <div className="fixed bottom-0 left-0 right-0 z-50 flex h-10 items-center gap-4 border-t border-slate-100 bg-white px-4 sm:gap-8 sm:px-10 lg:left-72">
         <div className="flex items-center gap-2">
-          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-          <span className="text-[10px] font-mono text-primary uppercase font-bold tracking-widest">
+          <div className="h-1.5 w-1.5 rounded-full bg-primary" />
+          <span className="text-[10px] font-bold uppercase tracking-widest text-primary">
             System Ready
           </span>
         </div>
-        <div className="hidden sm:flex items-center gap-2">
-          <span className="text-[10px] font-mono text-muted-foreground uppercase opacity-50">
-            Encrypted: AES-256
+        <div className="hidden items-center gap-2 sm:flex">
+          <span className="text-[10px] uppercase text-slate-400">
+            Valaiyagam Admin
           </span>
         </div>
-        <div className="ml-auto text-[10px] font-mono text-muted-foreground opacity-50 uppercase hidden sm:block">
+        <div className="ml-auto hidden text-[10px] uppercase text-slate-400 sm:block">
           Session Active
         </div>
       </div>
