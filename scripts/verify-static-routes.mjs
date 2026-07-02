@@ -1,35 +1,47 @@
 /**
- * Verifies static export output contains expected route folders.
- * Run after `npm run build` — also wired into amplify.yml pre-deploy check.
+ * Verifies static export routes exist as folder/index.html (clean URLs, no .html in paths).
  */
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 
 const OUT = join(process.cwd(), "out");
 
-const REQUIRED = [
-  "index.html",
-  "services/index.html",
-  "teams/index.html",
-  "careers/index.html",
-  "admin/index.html",
-  "admin/login/index.html",
-  "admin/dashboard/index.html",
-  "admin/employees/index.html",
-  "admin/employees/new/index.html",
-  "admin/teams/index.html",
-  "admin/jobs/index.html",
-  "admin/jobs/new/index.html",
-  "admin/gallery/index.html",
-  "404.html",
+/** Public URL paths — no .html extension */
+const REQUIRED_ROUTES = [
+  "/",
+  "/services",
+  "/teams",
+  "/careers",
+  "/admin",
+  "/admin/login",
+  "/admin/dashboard",
+  "/admin/employees",
+  "/admin/employees/new",
+  "/admin/teams",
+  "/admin/jobs",
+  "/admin/jobs/new",
+  "/admin/gallery",
+  "/404",
 ];
 
-const missing = REQUIRED.filter((route) => !existsSync(join(OUT, route)));
+function resolveExportFile(route) {
+  if (route === "/404") return "404.html";
+  if (route === "/") return "index.html";
+  const folder = route.replace(/^\//, "");
+  return join(folder, "index.html");
+}
+
+const missing = REQUIRED_ROUTES.filter((route) => {
+  const file = resolveExportFile(route);
+  return !existsSync(join(OUT, file));
+});
 
 if (missing.length > 0) {
   console.error("Static export verification FAILED. Missing routes:");
-  missing.forEach((r) => console.error(`  - out/${r}`));
+  missing.forEach((route) => console.error(`  - ${route}`));
   process.exit(1);
 }
 
-console.log(`Static export OK — ${REQUIRED.length} required routes present.`);
+console.log(
+  `Static export OK — ${REQUIRED_ROUTES.length} routes verified (${REQUIRED_ROUTES.join(", ")}).`,
+);

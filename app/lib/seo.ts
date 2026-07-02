@@ -29,8 +29,14 @@ export function absoluteUrl(path = "/"): string {
     return `${site}${normalized}`;
   }
 
-  const withSlash = normalized.endsWith("/") ? normalized : `${normalized}/`;
-  return `${site}${withSlash === "//" ? "/" : withSlash}`;
+  // trailingSlash: true — canonical URLs use trailing slash, no .html extension
+  const withSlash =
+    normalized === "/"
+      ? "/"
+      : normalized.endsWith("/")
+        ? normalized
+        : `${normalized}/`;
+  return `${site}${withSlash}`;
 }
 
 export const SITE_CONFIG = {

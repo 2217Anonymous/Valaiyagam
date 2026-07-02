@@ -1,6 +1,5 @@
 /**
- * Path helpers for static export (trailingSlash: true) on Amplify / CloudFront.
- * Always use these for window.location and manual redirects in production.
+ * Path helpers for static export (folder/index.html — no .html in URLs).
  */
 
 const TRAILING_SLASH = true;
@@ -9,13 +8,17 @@ export function getBasePath(): string {
   return process.env.NEXT_PUBLIC_BASE_PATH || "";
 }
 
-/** Normalize an app path for static hosting with trailing slashes. */
+/** Normalize an app path for static hosting. */
 export function appPath(path: string): string {
   const base = getBasePath().replace(/\/$/, "");
   let normalized = path.startsWith("/") ? path : `/${path}`;
 
   if (TRAILING_SLASH && normalized !== "/" && !normalized.endsWith("/")) {
     normalized = `${normalized}/`;
+  }
+
+  if (!TRAILING_SLASH && normalized.length > 1 && normalized.endsWith("/")) {
+    normalized = normalized.slice(0, -1);
   }
 
   return `${base}${normalized}`;

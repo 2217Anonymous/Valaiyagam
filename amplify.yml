@@ -1,6 +1,6 @@
 version: 1
-# AWS Amplify — Next.js static export (output: "export", trailingSlash: true)
-# Set env vars in Amplify Console → Environment variables (see .env.example)
+# Next.js static export with trailingSlash: true
+# Builds folder/index.html — URLs like /admin/login/ (never /admin/login.html)
 
 frontend:
   phases:
@@ -9,7 +9,6 @@ frontend:
         - npm ci
     build:
       commands:
-        # Override in Amplify Console → Environment variables if needed
         - export NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL:-https://www.valaiyagam.com}
         - export NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH:-}
         - npm run build
@@ -22,27 +21,9 @@ frontend:
     paths:
       - node_modules/**/*
 
-  # CloudFront redirects (required because trailingSlash: true serves folder/index.html)
-  # Without these, /admin and /services return 404 on direct access or refresh.
+  # Map extensionless URLs → folder routes (no .html in browser address bar)
   customRedirects:
-    # Admin entry — bare /admin has no index until build; send to login
     - source: "/admin"
-      target: "/admin/login/"
-      status: "302"
-
-    # Public pages
-    - source: "/services"
-      target: "/services/"
-      status: "301"
-    - source: "/teams"
-      target: "/teams/"
-      status: "301"
-    - source: "/careers"
-      target: "/careers/"
-      status: "301"
-
-    # Admin nested routes (no trailing slash → with trailing slash)
-    - source: "/admin/"
       target: "/admin/login/"
       status: "302"
     - source: "/admin/login"
@@ -69,8 +50,15 @@ frontend:
     - source: "/admin/gallery"
       target: "/admin/gallery/"
       status: "301"
-
-    # Dynamic career pages — e.g. /careers/fr001 → /careers/fr001/
+    - source: "/services"
+      target: "/services/"
+      status: "301"
+    - source: "/teams"
+      target: "/teams/"
+      status: "301"
+    - source: "/careers"
+      target: "/careers/"
+      status: "301"
     - source: "/careers/<*>"
       target: "/careers/<*>/"
       status: "301"
