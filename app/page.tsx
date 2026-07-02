@@ -36,7 +36,7 @@ export default function Home() {
     {
       component: <Gallery />,
       title: "PORTFOLIO",
-      id: "work"
+      id: "gallery"
     },
     {
       component: <Careers />,
@@ -53,7 +53,7 @@ export default function Home() {
   return (
     <div className="flex flex-col relative w-full overflow-x-hidden">
       <AnimatedCursor />
-      <div className="relative z-10 bg-background mb-[650px] md:mb-[550px] overflow-hidden">
+      <div className="relative z-10 bg-background mb-[720px] sm:mb-[680px] md:mb-[550px] overflow-x-hidden">
         <Hero id="home" />
 
         {sections.map((section, index) => (
@@ -63,6 +63,7 @@ export default function Home() {
             index={index}
             total={sections.length}
             title={section.title}
+            allowOverflow={section.id === "about"}
           >
             {section.component}
           </StackingSection>
@@ -71,13 +72,13 @@ export default function Home() {
         <div id="footer-reveal-trigger" className="w-full h-1 pointer-events-none" />
       </div>
 
-      <footer className="fixed bottom-0 left-0 right-0 z-0 h-[650px] md:h-[550px] w-full overflow-hidden">
+      <footer className="fixed bottom-0 left-0 right-0 z-0 min-h-[720px] sm:min-h-[680px] md:min-h-[550px] h-auto w-full overflow-y-auto overflow-x-hidden">
         <FooterIllustration>
-          <div className="max-w-7xl mx-auto px-6 py-16">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16">
+          <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 py-12 sm:py-16">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 xl:gap-20">
 
               {/* Brand Section */}
-              <div className="md:col-span-4 space-y-6">
+              <div className="lg:col-span-4 space-y-6">
                 <Logo variant="full" className="max-h-24" />
                 <p className="text-slate-600 font-medium leading-relaxed">
                   Pioneering digital transformation through innovative software engineering and cutting-edge cloud solutions.
@@ -101,7 +102,7 @@ export default function Home() {
               </div>
 
               {/* Company Links */}
-              <div className="md:col-span-2 space-y-6">
+              <div className="lg:col-span-2 space-y-6">
                 <h4 className="text-lg font-bold text-slate-900">Company</h4>
                 <ul className="space-y-4">
                   <li><a href="#about" className="text-slate-600 hover:text-primary transition-colors font-medium">About Us</a></li>
@@ -112,7 +113,7 @@ export default function Home() {
               </div>
 
               {/* Legal / Resources */}
-              <div className="md:col-span-2 space-y-6">
+              <div className="lg:col-span-2 space-y-6">
                 <h4 className="text-lg font-bold text-slate-900">Resources</h4>
                 <ul className="space-y-4">
                   <li><a href="#gallery" className="text-slate-600 hover:text-primary transition-colors font-medium">Portfolio</a></li>
@@ -123,7 +124,7 @@ export default function Home() {
               </div>
 
               {/* Newsletter & Contact */}
-              <div className="md:col-span-4 space-y-6">
+              <div className="lg:col-span-4 space-y-6">
                 <h4 className="text-lg font-bold text-slate-900">Stay Connected</h4>
                 <p className="text-slate-600 font-medium">
                   Subscribe to our newsletter for the latest tech insights.

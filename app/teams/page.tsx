@@ -21,14 +21,13 @@ export default async function TeamsPage() {
   }, {} as Record<string, Employee[]>);
 
   return (
-    <div className="pt-24 min-h-screen pb-20 px-6">
-      <div className="max-w-7xl mx-auto space-y-20">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-6">
-          <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-300">
+    <div className="pt-24 min-h-screen pb-20 px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto space-y-16 sm:space-y-20">
+        <div className="text-center max-w-3xl mx-auto space-y-4 sm:space-y-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-300">
             Meet the Minds
           </h1>
-          <p className="text-lg text-slate-400">
+          <p className="text-base sm:text-lg text-slate-400">
             The architects, engineers, and visionaries behind Valaiyagam
             Technologies.
           </p>

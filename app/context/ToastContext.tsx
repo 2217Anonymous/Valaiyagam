@@ -64,7 +64,7 @@ export const ToastProvider = ({ children }: { children: ReactNode }) => {
                             animate={{ opacity: 1, x: 0, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
                             className={`
-                pointer-events-auto w-full min-w-[320px] max-w-sm rounded-xl p-4 shadow-lg border backdrop-blur-md flex items-start gap-3
+                pointer-events-auto w-[calc(100vw-2rem)] sm:min-w-[280px] sm:max-w-sm rounded-xl p-4 shadow-lg border backdrop-blur-md flex items-start gap-3
                 ${t.type === 'success' ? 'bg-primary/10 border-primary/20 text-foreground' : ''}
                 ${t.type === 'error' ? 'bg-red-50/90 border-red-200 text-red-900' : ''}
                 ${t.type === 'info' ? 'bg-white/90 border-slate-200 text-slate-900' : ''}

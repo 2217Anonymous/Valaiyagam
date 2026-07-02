@@ -28,11 +28,22 @@ const menuItems = [
   { href: "/admin/gallery", label: "Asset Library", icon: ImageIcon },
 ];
 
-export function Sidebar() {
+interface SidebarProps {
+  isOpen?: boolean;
+  onClose?: () => void;
+}
+
+export function Sidebar({ isOpen = false, onClose }: SidebarProps) {
   const pathname = usePathname();
 
   return (
-    <aside className="w-72 bg-[#19272b] border-r border-primary/20 flex flex-col h-full shrink-0 transition-all font-mono">
+    <aside
+      className={cn(
+        "w-72 bg-[#19272b] border-r border-primary/20 flex flex-col h-full shrink-0 transition-transform duration-300 font-mono z-50",
+        "fixed inset-y-0 left-0 lg:static lg:translate-x-0",
+        isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0",
+      )}
+    >
       {/* Brand Section */}
       <div className="h-24 flex items-center px-8 border-b border-primary/10 bg-[#243135]">
         <Link href="/" className="flex items-center gap-3 min-w-0">
@@ -71,6 +82,7 @@ export function Sidebar() {
             <Link
               key={item.href}
               href={item.href}
+              onClick={onClose}
               className={cn(
                 "flex items-center gap-4 px-5 py-3.5 rounded-lg transition-all duration-300 group relative overflow-hidden group border",
                 isActive

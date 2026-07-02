@@ -215,9 +215,9 @@ export function Careers() {
   return (
     <section
       id="careers"
-      className="py-24 relative overflow-hidden bg-slate-50/50"
+      className="py-16 sm:py-20 lg:py-24 relative overflow-hidden bg-slate-50/50"
     >
-      <div className="max-w-[80%] mx-auto px-6 relative z-10">
+      <div className="w-full max-w-[95%] mx-auto px-4 sm:px-6 relative z-10">
 
         {/* Section Header */}
         <motion.div
@@ -229,10 +229,10 @@ export function Careers() {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono font-bold uppercase tracking-widest leading-none">
             <Briefcase className="w-3 h-3" /> We're Hiring
           </div>
-          <h2 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1]">
+          <h2 className="heading-section text-slate-900 leading-[1.1]">
             Join Our <br /> <span className="text-primary italic">Mission</span>
           </h2>
-          <p className="text-xl text-slate-600 leading-relaxed font-medium">
+          <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed font-medium">
             We're building the operating system for the next generation of business. Find your role below.
           </p>
         </motion.div>
@@ -285,9 +285,9 @@ export function Careers() {
                     </div>
 
                     {/* Action Arrow */}
-                    <div className="hidden md:flex flex-col items-center justify-center pl-6 border-l border-slate-100 self-stretch">
-                       <div className={`w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center transition-all ${isExpanded ? 'bg-primary border-primary text-white rotate-180' : 'text-slate-300 group-hover:bg-primary group-hover:border-primary group-hover:text-white'}`}>
-                          <ChevronDown className="w-6 h-6 transition-transform" />
+                    <div className="flex flex-col items-center justify-center pl-0 md:pl-6 border-t md:border-t-0 md:border-l border-slate-100 pt-4 md:pt-0 self-stretch w-full md:w-auto">
+                       <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-slate-200 flex items-center justify-center transition-all ${isExpanded ? 'bg-primary border-primary text-white rotate-180' : 'text-slate-300 group-hover:bg-primary group-hover:border-primary group-hover:text-white'}`}>
+                          <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6 transition-transform" />
                        </div>
                     </div>
                  </div>

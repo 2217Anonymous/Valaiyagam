@@ -59,7 +59,7 @@ export default function TeamsAdmin() {
 
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700 font-mono">
-      <div className="flex justify-between items-end">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
         <div className="space-y-2">
           <div className="flex items-center gap-2 text-primary">
             <Network className="w-4 h-4" />
@@ -67,7 +67,7 @@ export default function TeamsAdmin() {
               Resource Management
             </span>
           </div>
-          <h1 className="text-4xl font-black text-white tracking-tighter">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tighter">
             PROJECT_UNITS
           </h1>
           <p className="text-muted-foreground text-sm uppercase tracking-wider">
